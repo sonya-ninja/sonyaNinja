@@ -71,3 +71,22 @@
 		<SC.Primitive object={new THREE.GridHelper(50, 50, 0x444444, 0x555555)} position={[0, 0.001, 0]} />
 	</SC.Group>
 </SC.Canvas>
+
+<div class="pageWrap">
+	<header>
+		<h1>Sonya Ninja</h1>
+		<p>Welcome!</p>
+	</header>
+</div>
+
+
+<style>
+	.pageWrap {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 50vw;
+		height: 50vh;
+		z-index: 2;
+	}
+</style>
