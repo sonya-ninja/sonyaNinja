@@ -1,4 +1,8 @@
 <script>
+	// PATCHING TOGETHER VARIOUS BITS FROM:
+	// https://note.com/npaka/n/naf87662867d1#Rggli
+	// https://svelte-cubed.vercel.app/docs/getting-started
+	
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
 	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
