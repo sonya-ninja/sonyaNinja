@@ -2,7 +2,10 @@
 	// PATCHING TOGETHER VARIOUS BITS FROM:
 	// https://note.com/npaka/n/naf87662867d1#Rggli
 	// https://svelte-cubed.vercel.app/docs/getting-started
-	
+
+	// Nice walk cylce: https://tenor.com/view/ninja-girl-warrior-sexy-girl-sexy-ninja-gif-13464310
+
+
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
 	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -18,6 +21,7 @@
 		frame += 0.01;
 		// console.log(frame);
 	});
+	
 
 	onMount(() => {
 		console.clear();
@@ -30,7 +34,7 @@
 		loader.load(
 
 			// URL to the vroid model (VRM)
-			'/ninjav2.vrm',
+			'/Sonya-Ninja.vrm',
 
 			// called when the resource is loaded
 			( gltf ) => {
