@@ -83,6 +83,10 @@
 	// 	}
 	// });
 
+	// Transparent material that receives shadows
+	const shadowMaterial = new THREE.ShadowMaterial();
+	shadowMaterial.opacity = 0.2;
+
 	onMount(() => {
 		// Clear the console
 		console.clear();
@@ -124,51 +128,79 @@
 </script>
 
 <!-- HTML ELEMENTS AND SVELTE-CUBED COMPONENTS -->
-<SC.Canvas
-	antialias
-	background={new THREE.Color("papayawhip")}
-	fog={new THREE.FogExp2("papayawhip", 0.1)}
-	shadows
->
+<SC.Canvas antialias shadows alpha>
 	<!-- <SC.Mesh geometry={new THREE.BoxGeometry()} material={new THREE.MeshStandardMaterial({ color: 0xff3e00 })} castShadow /> -->
 	<SC.Primitive object={ninja} position={[0, -height / 2, 0]} />
-	<SC.PerspectiveCamera position={[1, 1, 2]} />
-	<SC.OrbitControls enableZoom={true} maxPolarAngle={Math.PI * 0.51} />
+	<SC.PerspectiveCamera position={[0, 1, 2]} />
+	<SC.OrbitControls enableZoom={true} />
 	<SC.AmbientLight intensity={0.3} />
 	<SC.DirectionalLight
 		intensity={0.7}
-		position={[2, 2, 1]}
+		position={[-1, 2, 1]}
 		shadow={{ mapSize: [4048, 4048] }}
 	/>
 	<SC.Group position={[0, -height / 2, 0]}>
 		<SC.Mesh
-			geometry={new THREE.PlaneGeometry(50, 50)}
-			material={new THREE.MeshStandardMaterial({ color: "pink" })}
+			geometry={new THREE.PlaneGeometry(5, 5)}
+			material={shadowMaterial}
 			rotation={[-Math.PI / 2, 0, 0]}
 			receiveShadow
 		/>
-		<SC.Primitive
+		<!-- <SC.Primitive
 			object={new THREE.GridHelper(50, 50, 0x444444, 0x555555)}
 			position={[0, 0.001, 0]}
-		/>
+		/> -->
 	</SC.Group>
 </SC.Canvas>
 
-<div class="pageWrap">
-	<header>
-		<h1>Sonya Ninja</h1>
-		<p>Testing vrm in three.js</p>
-	</header>
+<div class="pageContainer">
+	<div class="pageWrap">
+		<header>HEADER</header>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+		<section>Section</section>
+	</div>
 </div>
 
 <!-- STYLES -->
 <style>
-	.pageWrap {
+	:global(.container) {
+		z-index: 2;
+		pointer-events: none;
+	}
+	:global(canvas) {
+		border: 1px solid red;
 		position: fixed;
+	}
+	.pageContainer {
+		position: fixed;
+		z-index: 1;
+		border: 10px solid blue;
 		top: 0;
 		left: 0;
-		z-index: 2;
-		border: 10px solid white;
-		padding: 2rem;
+		right: 0;
+		bottom: 0;
+		overflow-y: scroll;
+	}
+	.pageWrap {
+		padding: 1rem;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-auto-rows: 300px;
+		grid-gap: 1rem;
+	}
+	section {
+		border: 3px solid black;
+	}
+	header {
+		grid-column: 1 / span 3;
+		grid-row: 1 / span 2;
 	}
 </style>
