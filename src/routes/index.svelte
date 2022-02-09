@@ -9,7 +9,7 @@
 		<Logo />
 	</header>
 	<section>
-		<h1>Kick Ass Web Development</h1>
+		<h1>Your personal web ninja</h1>
 		<p class="contact">hello@sonya.ninja</p>
 		<ul>
 			<li>Web Apps</li>
